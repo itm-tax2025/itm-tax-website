@@ -1,0 +1,61 @@
+@use '../../../styles/variables' as *;
+.icon {
+	display: flex;
+	mask-size: 100%;
+	mask-repeat: no-repeat;
+	background-color: #{white};
+	&--small {
+		width: 20px;
+		height: 20px;
+	}
+	&--medium {
+		width: 32px;
+		height: 32px;
+	}
+	&--large {
+		width: 40px;
+		height: 40px;
+	}
+}
+
+.icon {
+	&--facebook {
+		mask-image: url('../../../assets/icons/facebook.svg');
+	}
+	&--x {
+		mask-image: url('../../../assets/icons/x.svg');
+	}
+	&--instagram {
+		mask-image: url('../../../assets/icons/instagram.svg');
+	}
+	&--linkedin {
+		mask-image: url('../../../assets/icons/linkedin.svg');
+	}
+	&--youtube {
+		mask-image: url('../../../assets/icons/youtube.svg');
+	}
+	&--email {
+		mask-image: url('../../../assets/icons/email.svg');
+	}
+	&--phone {
+		mask-image: url('../../../assets/icons/phone.svg');
+	}
+	&--book-open-reader {
+		mask-image: url('../../../assets/icons/book-open-reader.svg');
+	}
+	&--lightbulb-dollar {
+		mask-image: url('../../../assets/icons/lightbulb-dollar.svg');
+	}
+	&--meeting {
+		mask-image: url('../../../assets/icons/meeting.svg');
+	}
+	&--user-headset {
+		mask-image: url('../../../assets/icons/user-headset.svg');
+	}
+	&--tax {
+		mask-image: url('../../../assets/icons/tax.svg');
+	}
+	&--caret-right {
+		mask-image: url('../../../assets/icons/caret-right.svg');
+	}
+}
