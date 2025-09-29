@@ -19,6 +19,15 @@
 }
 
 .icon {
+	&--award {
+		mask-image: url('../../../assets/icons/award.svg');
+	}
+	&--completed {
+		mask-image: url('../../../assets/icons/completed.svg');
+	}
+	&--trust {
+		mask-image: url('../../../assets/icons/trust.svg');
+	}
 	&--facebook {
 		mask-image: url('../../../assets/icons/facebook.svg');
 	}

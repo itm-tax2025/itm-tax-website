@@ -50,7 +50,8 @@ $background-dark-alt: $dark-gray; // For cards, sections etc. in dark theme
 $border-light: $medium-gray; // Standard border for light theme
 $border-dark: #556b5f; // A darker, slightly green-tinted border for dark theme
 $border-primary: 2px solid $border-light; // Primary border color for cards and sections
-$border-radius-primary: 10px; // Consistent border radius for buttons and cards
+$border-radius-primary: 5px; // Consistent border radius for buttons and cards
+$border-radius-inner: 3px; // Slightly smaller radius for inner elements
 // Accent/Highlight Colors (variations of primary or secondary)
 $accent-light: $primary-green-light;
 $accent-dark: $primary-green-dark;
@@ -76,22 +77,31 @@ $box-shadow-active-primary: 0 2px 5px rgba(0, 0, 0, 0.3),
 $box-shadow-inset: inset 0 4px 6px rgba(0, 0, 0, 0.1),
 	inset 0 -2px 4px rgba(0, 0, 0, 0.05);
 
-$cubic-bezier-ease: cubic-bezier(0.97, 1.03, 0.21, 0.69);
+$cubic-bezier-ease: cubic-bezier(0.1, 0.7, 0, 1);
 $cubic-bezier-ease-two: cubic-bezier(0.97, 1.03, 0.79, 1.04);
 :root {
+	--font-size-small: 14px;
+	--font-size-medium: 16px;
+	--font-size-large: 18px;
+	--font-size-xlarge: 24px;
+
 	--cubic-bezier-ease: #{$cubic-bezier-ease};
 	--cubic-bezier-ease-two: #{$cubic-bezier-ease-two};
 	--border-radius-primary: #{$border-radius-primary};
+	--border-radius-inner: #{$border-radius-inner};
 	--border-primary: #{$border-primary};
 	// Light Theme
 	--color-primary: #{$primary-green-light};
+	--color-secondary: #{$primary-green-dark};
 	--color-secondary-blue: #{$pastel-blue-light};
 	--color-secondary-purple: #{$pastel-purple-light};
 	--color-secondary-yellow: #{$pastel-yellow-light};
 	--color-secondary-pink: #{$pastel-pink-light};
 
+	--white: #{$white};
 	--color-text-primary: #{$text-light-primary};
 	--color-text-secondary: #{$text-light-secondary};
+	--color-text-disabled: #{$text-light-disabled};
 
 	--color-background: #{$background-light};
 	--color-background-alt: #{$background-light-alt};

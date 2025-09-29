@@ -4,6 +4,7 @@ export function useRipple<T extends HTMLElement>() {
 
 	const createRipple = (event: React.MouseEvent<T, MouseEvent>) => {
 		const button = ref.current;
+		console.log('button', button);
 		if (!button) return;
 
 		const ripple = document.createElement('span');

@@ -29,6 +29,39 @@
 	}
 }
 
+@keyframes scale-to-show-vertical {
+	0% {
+		transform: scaleY(var(--scaleYStart, 0));
+		opacity: var(--opacityStart, 0);
+	}
+	100% {
+		transform: scaleY(var(--scaleYEnd, 1));
+		opacity: var(--opacityEnd, 1);
+	}
+}
+
+@keyframes extend-width {
+	0% {
+		width: 0;
+		opacity: var(--opacityStart, 0);
+	}
+	100% {
+		width: 100%;
+		opacity: var(--opacityEnd, 1);
+	}
+}
+
+@keyframes extend-height {
+	0% {
+		height: 0;
+		opacity: var(--opacityStart, 0);
+	}
+	100% {
+		height: 100%;
+		opacity: var(--opacityEnd, 1);
+	}
+}
+
 @keyframes fadeIn {
 	0% {
 		opacity: var(--opacityStart, 0);
