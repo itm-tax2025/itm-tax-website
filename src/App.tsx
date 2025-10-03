@@ -6,33 +6,38 @@ import NotFound from './page/NotFound';
 import Services from './page/Services';
 import Pricing from './page/Pricing';
 import Contact from './page/Contact';
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+	[
+		{
+			element: <HomeLayout />,
+			children: [
+				{
+					path: '/',
+					element: <Home />,
+				},
+				{
+					path: '/services',
+					element: <Services />,
+				},
+				{
+					path: '/pricing',
+					element: <Pricing />,
+				},
+				{
+					path: '/contact',
+					element: <Contact />,
+				},
+				{
+					path: '*',
+					element: <NotFound />,
+				},
+			],
+		},
+	],
 	{
-		element: <HomeLayout />,
-		children: [
-			{
-				path: '/',
-				element: <Home />,
-			},
-			{
-				path: '/services',
-				element: <Services />,
-			},
-			{
-				path: '/pricing',
-				element: <Pricing />,
-			},
-			{
-				path: '/contact',
-				element: <Contact />,
-			},
-			{
-				path: '*',
-				element: <NotFound />,
-			},
-		],
-	},
-]);
+		basename: '/itm-tax-website',
+	}
+);
 
 function App() {
 	return <RouterProvider router={router} />;
