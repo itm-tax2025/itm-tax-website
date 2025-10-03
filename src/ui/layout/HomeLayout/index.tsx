@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import './HomeLayout.scss';
 import { NavLink } from 'react-router-dom';
@@ -7,7 +7,9 @@ import LOGO from '../../../assets/images/logo-plain.png';
 import Icon from '../../component/Icon';
 import Button from '../../component/Button';
 import { scrollToElement } from '../../../utils/window';
+import { useNavigate } from 'react-router-dom';
 const HomeLayout: React.FC<unknown> = () => {
+	const navigate = useNavigate();
 	const [currentPage, setCurrentPage] = React.useState(
 		window.location.pathname
 	);
@@ -17,6 +19,10 @@ const HomeLayout: React.FC<unknown> = () => {
 		if (e.currentTarget.hash) {
 			scrollToElement(e.currentTarget.hash);
 		}
+	};
+
+	const handleGoto = () => {
+		navigate('/contact');
 	};
 
 	return (
@@ -56,7 +62,7 @@ const HomeLayout: React.FC<unknown> = () => {
 						</li>
 					</ul>
 					<div className="home-layout__header__nav__cta prevent-select">
-						<Button>
+						<Button onClick={handleGoto}>
 							<p>Request a Quote</p>
 						</Button>
 					</div>
@@ -68,7 +74,7 @@ const HomeLayout: React.FC<unknown> = () => {
 			</main>
 			<footer className="home-layout__footer">
 				<div className="home-layout__footer__info">
-					<div className="home-layout__footer__info__general">
+					<div className="home-layout__footer__info__general prevent-select">
 						<img src={GRAYSCALELOGO} alt="logo" />
 						<div className="home-layout__footer__info__general__social">
 							<div className="home-layout__footer__info__general__social__text">

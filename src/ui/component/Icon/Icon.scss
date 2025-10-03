@@ -46,6 +46,9 @@
 	&--email {
 		mask-image: url('../../../assets/icons/email.svg');
 	}
+	&--email-alt {
+		mask-image: url('../../../assets/icons/email-alt.svg');
+	}
 	&--phone {
 		mask-image: url('../../../assets/icons/phone.svg');
 	}
@@ -66,5 +69,8 @@
 	}
 	&--caret-right {
 		mask-image: url('../../../assets/icons/caret-right.svg');
+	}
+	&--check {
+		mask-image: url('../../../assets/icons/check.svg');
 	}
 }

@@ -1,0 +1,191 @@
+@use '../../styles/animations' as *;
+
+.services-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 80px;
+	& h1 {
+		position: relative;
+		font-size: 52px;
+		font-weight: bold;
+		margin-bottom: 20px;
+		background-image: linear-gradient(
+			to left bottom,
+			var(--color-primary),
+			var(--color-secondary),
+			var(--white)
+		);
+		background-position: 50% 50%;
+		background-size: 200% 200%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		color: transparent;
+		animation: background-pan 5000ms var(--cubic-bezier-ease) infinite;
+	}
+	& video {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		z-index: 0;
+	}
+
+	&__header {
+		position: relative;
+		text-align: center;
+		margin-bottom: 40px;
+		max-width: 1000px;
+		p {
+			font-size: var(--font-size-large);
+			color: var(--color-text-primary);
+		}
+	}
+	&__services {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		&__item {
+			--translateYStart: -150px;
+			--translateYEnd: 0px;
+			display: flex;
+			width: 550px;
+			flex-direction: column;
+			margin: 40px 50px;
+			padding: 20px;
+			transition: all 500ms var(--cubic-bezier-ease);
+			opacity: 0;
+			animation: fadeIn 1200ms var(--cubic-bezier-ease) forwards;
+			&__header {
+				font-size: 32px;
+				margin: 0 0 20px 0;
+				font-weight: bold;
+				background-image: linear-gradient(
+					to right bottom,
+					var(--color-primary),
+					var(--color-secondary),
+					var(--white)
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				color: transparent;
+			}
+			&__description {
+				font-size: var(--font-size-medium);
+				color: var(--color-text-primary);
+				&__expand {
+					position: relative;
+					display: inline-flex;
+					margin-left: 5px;
+					color: var(--color-primary);
+					font-weight: 600;
+					cursor: pointer;
+					transition: all 500ms 200ms var(--cubic-bezier-ease);
+					&::before {
+						content: '';
+						position: absolute;
+						bottom: 0;
+						width: 100%;
+						height: 2px;
+						border-radius: var(--borrder-radius-primary);
+						background-color: var(--color-primary);
+						opacity: 0;
+						backface-visibility: hidden;
+					}
+					&:active {
+						transform: scale(0.95);
+					}
+					&:hover {
+						&::before {
+							--translateYStart: 0px;
+							--translateYEnd: 0px;
+							--translateXStart: -20px;
+							--translateXEnd: 0px;
+							animation: fadeIn 400ms var(--cubic-bezier-ease) forwards;
+						}
+					}
+					&.active {
+						background-color: var(--color-primary);
+						color: var(--white);
+						padding: 2px 6px;
+						border-top-left-radius: var(--border-radius-primary);
+						border-top-right-radius: var(--border-radius-primary);
+					}
+				}
+			}
+			&__reason {
+				display: none;
+				flex-direction: column;
+				justify-content: center;
+				align-content: end;
+				color: var(--color-text-secondary);
+				text-align: left;
+				transition: all 500ms var(--cubic-bezier-ease);
+				margin-top: -2.5px;
+				transform-origin: center;
+				& h4 {
+					margin-bottom: 10px;
+					font-weight: 600;
+					color: var(--color-text-secondary);
+				}
+				&.active {
+					--translateYStart: 50px;
+					--translateYEnd: 0px;
+					display: flex;
+					animation: fadeIn 600ms var(--cubic-bezier-ease) forwards;
+					background-color: var(--color-primary);
+					padding: 10px;
+					border-top-right-radius: 10px;
+					border-top-left-radius: 10px;
+					& h4 {
+						color: var(--white);
+					}
+					& p {
+						color: var(--white);
+					}
+				}
+			}
+			&__value {
+				font-size: var(--font-size-medium);
+				display: none;
+				transition: all 500ms var(--cubic-bezier-ease);
+				& h4 {
+					color: var(--color-text-secondary);
+					margin-bottom: 5px;
+					font-weight: 600;
+				}
+				& ul {
+					list-style-type: disc;
+					padding-left: 20px;
+					color: var(--color-text-secondary);
+					li {
+						margin-bottom: 5px;
+					}
+				}
+				&.active {
+					--translateYStart: 60px;
+					--translateYEnd: 0px;
+					display: flex;
+					flex-direction: column;
+					flex-grow: 0;
+					animation: fadeIn 700ms var(--cubic-bezier-ease) forwards;
+					background-color: var(--color-primary);
+					padding: 10px;
+					border-bottom-right-radius: 10px;
+					border-bottom-left-radius: 10px;
+					& h4 {
+						color: var(--white);
+					}
+					& ul {
+						color: var(--white);
+					}
+				}
+			}
+		}
+	}
+}

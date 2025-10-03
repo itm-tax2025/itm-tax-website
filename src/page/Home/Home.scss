@@ -20,16 +20,20 @@
 		background-position: center;
 		background-repeat: no-repeat;
 		position: relative;
+		opacity: 0;
+		animation: fadeIn 1000ms var(--cubic-bezier-ease) forwards;
 		&__content {
 			display: flex;
 			flex-direction: column;
 			width: 900px;
 			height: 400px;
-			padding: 50px;
+			padding: 25px;
 			margin-left: 330px;
 			background-color: rgba(#fefefe, 0.8);
 			border-radius: var(--border-radius-primary);
 			box-shadow: var(--box-shadow-primary);
+			opacity: 0;
+			animation: fadeIn 1000ms var(--cubic-bezier-ease) 1100ms forwards;
 			& h1 {
 				font-size: 2.5rem;
 				margin-bottom: 20px;
@@ -43,14 +47,25 @@
 				-webkit-text-fill-color: transparent; /* For Safari/Chrome */
 				background-clip: text; /* For Firefox (requires prefix in some cases) */
 				color: transparent; /* Fallback */
+				opacity: 0;
+				--translateXStart: -100px;
+				--translateXEnd: 0;
+				animation: fadeIn 1000ms var(--cubic-bezier-ease) 1100ms forwards;
 			}
 			& p {
 				font-size: var(--font-size-medium);
 				margin-bottom: 30px;
-				max-width: 500px;
+				max-width: 800px;
 				color: var(--color-text-primary);
+				opacity: 0;
+				--translateXStart: 100px;
+				--translateXEnd: 0;
+				animation: fadeIn 1000ms var(--cubic-bezier-ease) 1100ms forwards;
 			}
 			&__cta {
+				--translateYStart: 100px;
+				--translateYEnd: 0;
+				animation: fadeIn 1000ms var(--cubic-bezier-ease) 1100ms forwards;
 				& button {
 					font-size: var(--font-size-small);
 					display: flex;
@@ -69,6 +84,10 @@
 			position: absolute;
 			right: 150px;
 			bottom: 0;
+			opacity: 0;
+			--translateXStart: -100px;
+			--translateXEnd: 0;
+			animation: fadeIn 1000ms var(--cubic-bezier-ease) 1200ms forwards;
 			& img {
 				display: flex;
 				width: 850px;
@@ -92,6 +111,10 @@
 			-webkit-text-fill-color: transparent; /* For Safari/Chrome */
 			background-clip: text; /* For Firefox (requires prefix in some cases) */
 			color: transparent; /* Fallback */
+			opacity: 0;
+			--translateYStart: -100px;
+			--translateXEnd: 0;
+			animation: fadeIn 1000ms var(--cubic-bezier-ease) 200ms forwards;
 		}
 		&__cards {
 			display: flex;
@@ -104,6 +127,10 @@
 				text-align: center;
 				padding: 20px;
 				border-radius: var(--border-radius-primary);
+				opacity: 0;
+				--translateXStart: -100px;
+				--translateXEnd: 0;
+				animation: fadeIn 1000ms var(--cubic-bezier-ease) forwards;
 				& i {
 					margin: 10px 0;
 				}
@@ -163,6 +190,10 @@
 			text-align: center;
 			font-weight: bold;
 			font-size: var(--font-size-large);
+			opacity: 0;
+			--translateYStart: -100px;
+			--translateXEnd: 0;
+			animation: fadeIn 1000ms var(--cubic-bezier-ease) 200ms forwards;
 		}
 		&__content {
 			display: flex;
@@ -285,6 +316,10 @@
 						}
 					}
 				}
+				opacity: 0;
+				--translateYStart: -100px;
+				--translateXEnd: 0;
+				animation: fadeIn 1000ms var(--cubic-bezier-ease) 500ms forwards;
 			}
 		}
 	}

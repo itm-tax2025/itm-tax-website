@@ -6,19 +6,31 @@ import Icon from '../../ui/component/Icon';
 import IVY from '../../assets/images/ivy-transparent.png';
 import TONY from '../../assets/images/tony-transparent.png';
 import Divider from '../../ui/component/NonFunctional/Divider';
+import { useNavigate } from 'react-router-dom';
 const Home = () => {
+	const navigate = useNavigate();
+
+	const handleGoTo = () =>{
+		navigate('/contact');
+	}
+
 	return (
 		<div className="home-page">
 			<section className="home-page__hero">
 				<div className="home-page__hero__content">
-					<h1>Financial Clarity. Accelerated Growth.</h1>
+					<h1>Tax Made Easy - Results Made Real.</h1>
 					<p>
-						Stop letting financial uncertainty slow you down. Get a dedicated
-						advisory team that moves you beyond reactive bookkeeping to achieve
-						total financial control and peace of mind, 365 days a year.
+						Your business deserves more than just someone crunching numbers, it
+						deserves a partner who truly cares about your success. We take care
+						of your taxes, bookkeeping, and payroll with accuracy and personal
+						attention, giving you the freedom to focus on growing the business
+						you have worked so hard to build. With clear numbers, reliable
+						support, and a trusted advisor by your side, you will have the peace
+						of mind and confidence to make smart decisions and move your
+						business forward with ease.
 					</p>
 					<div className="home-page__hero__content__cta">
-						<Button>Book Your Financial Clarity Session </Button>
+						<Button onClick={handleGoTo}>Book Your Financial Clarity Session </Button>
 					</div>
 				</div>
 				<div className="home-page__hero__image prevent-select">
@@ -30,7 +42,7 @@ const Home = () => {
 					<h1>Why Choose Us?</h1>
 				</div>
 				<div className="home-page__reason__cards">
-					<Card className="home-page__reason__cards__item">
+					<Card className="home-page__reason__cards__item" style={{ animationDelay: '500ms' }}>
 						<Icon name="trust" size="large" />
 						<h3>Expertise You Can Trust</h3>
 						<h5>Dedicated to Your Success</h5>
@@ -45,7 +57,7 @@ const Home = () => {
 							</p>
 						</span>
 					</Card>
-					<Card className="home-page__reason__cards__item">
+					<Card className="home-page__reason__cards__item"  style={{ animationDelay: '400ms' }}>
 						<Icon name="completed" size="large" />
 						<h3>Comprehensive Services</h3>
 						<h5>Covering Your Full Financial Spectrum</h5>
@@ -60,7 +72,7 @@ const Home = () => {
 							</p>
 						</span>
 					</Card>
-					<Card className="home-page__reason__cards__item">
+					<Card className="home-page__reason__cards__item" style={{ animationDelay: '300ms' }}>
 						<Icon name="award" size="large" />
 						<h3>Proven Results</h3>
 						<h5>Your Goals Are Our Track Record</h5>
@@ -82,7 +94,7 @@ const Home = () => {
 					<h1>Meet Our Team</h1>
 				</div>
 				<div className="home-page__about__content">
-					<div className="home-page__about__content__teammember">
+					<div className="home-page__about__content__teammember" style={{ animationDelay: '600ms' }}>
 						<div className="home-page__about__content__teammember__image home-page__about__content__teammember__image--ivy prevent-select">
 							<img src={IVY} alt="Ivy" />
 							<span className="home-page__about__content__teammember__image__info">
@@ -94,15 +106,13 @@ const Home = () => {
 							<p className="home-page__about__content__teammember__bio__intro">
 								Ivy Truong, a Certified Public Accountant (CPA), specializes in
 								the complex tax and advisory needs of high-net-worth individuals
-								and big portfolio clients
+								and business clients.
 							</p>
 							<ul className="home-page__about__content__teammember__bio__highlights">
 								<li style={{ animationDelay: '100ms' }}>
-									Specializes in High-Net-Worth & Big Portfolio Clients
+									Specializes in High-Net-Worth & Small Business Clients
 								</li>
-								<li style={{ animationDelay: '200ms' }}>
-									Complex Investment Taxation
-								</li>
+								<li style={{ animationDelay: '200ms' }}>Complex Taxation</li>
 								<li style={{ animationDelay: '300ms' }}>
 									Focus on Strategic Tax Minimization and Wealth Transfer
 								</li>
@@ -112,7 +122,7 @@ const Home = () => {
 							</ul>
 						</div>
 					</div>
-					<div className="home-page__about__content__teammember">
+					<div className="home-page__about__content__teammember"  style={{ animationDelay: '700ms' }}>
 						<div className="home-page__about__content__teammember__image home-page__about__content__teammember__image--tony prevent-select">
 							<img src={TONY} alt="Tony" />
 							<span className="home-page__about__content__teammember__image__info">
