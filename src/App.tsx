@@ -35,7 +35,7 @@ const router = createBrowserRouter(
 		},
 	],
 	{
-		basename: '/itm-tax-website',
+		basename: '/itmtax',
 	}
 );
 
