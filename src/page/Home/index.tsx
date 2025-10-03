@@ -1,18 +1,18 @@
 import './Home.scss';
-import Button from '../../ui/component/Button';
-import TEAMIMAGE from '../../assets/images/IVY-TONY-TRANSPARENT.png';
-import Card from '../../ui/component/Card';
-import Icon from '../../ui/component/Icon';
-import IVY from '../../assets/images/ivy-transparent.png';
-import TONY from '../../assets/images/tony-transparent.png';
-import Divider from '../../ui/component/NonFunctional/Divider';
+import Button from './../../ui/component/Button';
+import TEAMIMAGE from './../../assets/images/IVY-TONY-TRANSPARENT.png';
+import Card from './../../ui/component/Card';
+import Icon from './../../ui/component/Icon';
+import IVY from './../../assets/images/ivy-transparent.png';
+import TONY from './../../assets/images/tony-transparent.png';
+import Divider from './../../ui/component/NonFunctional/Divider';
 import { useNavigate } from 'react-router-dom';
 const Home = () => {
 	const navigate = useNavigate();
 
-	const handleGoTo = () =>{
+	const handleGoTo = () => {
 		navigate('/contact');
-	}
+	};
 
 	return (
 		<div className="home-page">
@@ -30,7 +30,9 @@ const Home = () => {
 						business forward with ease.
 					</p>
 					<div className="home-page__hero__content__cta">
-						<Button onClick={handleGoTo}>Book Your Financial Clarity Session </Button>
+						<Button onClick={handleGoTo}>
+							Book Your Financial Clarity Session{' '}
+						</Button>
 					</div>
 				</div>
 				<div className="home-page__hero__image prevent-select">
@@ -42,7 +44,9 @@ const Home = () => {
 					<h1>Why Choose Us?</h1>
 				</div>
 				<div className="home-page__reason__cards">
-					<Card className="home-page__reason__cards__item" style={{ animationDelay: '500ms' }}>
+					<Card
+						className="home-page__reason__cards__item"
+						style={{ animationDelay: '500ms' }}>
 						<Icon name="trust" size="large" />
 						<h3>Expertise You Can Trust</h3>
 						<h5>Dedicated to Your Success</h5>
@@ -57,7 +61,9 @@ const Home = () => {
 							</p>
 						</span>
 					</Card>
-					<Card className="home-page__reason__cards__item"  style={{ animationDelay: '400ms' }}>
+					<Card
+						className="home-page__reason__cards__item"
+						style={{ animationDelay: '400ms' }}>
 						<Icon name="completed" size="large" />
 						<h3>Comprehensive Services</h3>
 						<h5>Covering Your Full Financial Spectrum</h5>
@@ -72,7 +78,9 @@ const Home = () => {
 							</p>
 						</span>
 					</Card>
-					<Card className="home-page__reason__cards__item" style={{ animationDelay: '300ms' }}>
+					<Card
+						className="home-page__reason__cards__item"
+						style={{ animationDelay: '300ms' }}>
 						<Icon name="award" size="large" />
 						<h3>Proven Results</h3>
 						<h5>Your Goals Are Our Track Record</h5>
@@ -94,7 +102,9 @@ const Home = () => {
 					<h1>Meet Our Team</h1>
 				</div>
 				<div className="home-page__about__content">
-					<div className="home-page__about__content__teammember" style={{ animationDelay: '600ms' }}>
+					<div
+						className="home-page__about__content__teammember"
+						style={{ animationDelay: '600ms' }}>
 						<div className="home-page__about__content__teammember__image home-page__about__content__teammember__image--ivy prevent-select">
 							<img src={IVY} alt="Ivy" />
 							<span className="home-page__about__content__teammember__image__info">
@@ -122,7 +132,9 @@ const Home = () => {
 							</ul>
 						</div>
 					</div>
-					<div className="home-page__about__content__teammember"  style={{ animationDelay: '700ms' }}>
+					<div
+						className="home-page__about__content__teammember"
+						style={{ animationDelay: '700ms' }}>
 						<div className="home-page__about__content__teammember__image home-page__about__content__teammember__image--tony prevent-select">
 							<img src={TONY} alt="Tony" />
 							<span className="home-page__about__content__teammember__image__info">

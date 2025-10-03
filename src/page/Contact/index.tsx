@@ -1,10 +1,10 @@
 import { useRef, useState } from 'react';
-import Button from '../../ui/component/Button';
-import Icon from '../../ui/component/Icon';
+import Button from './../../ui/component/Button';
+import Icon from './../../ui/component/Icon';
 import './Contact.scss';
-import CONTACTUSBACKGROUND from '../../assets/images/contact-us-background.jpg';
-import MAILSEND from '../../assets/animated/send-mail.gif';
-import LOGO from '../../assets/images/logo.png';
+import CONTACTUSBACKGROUND from './../../assets/images/contact-us-background.jpg';
+import MAILSEND from './../../assets/animated/send-mail.gif';
+import LOGO from './../../assets/images/logo.png';
 import { toast, ToastContainer } from 'react-toastify';
 const Contact = () => {
 	const [isCTAHover, setIsCTAHover] = useState(false);

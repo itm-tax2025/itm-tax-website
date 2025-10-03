@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import Button from '../../ui/component/Button';
-import Card from '../../ui/component/Card';
-import Icon from '../../ui/component/Icon';
+import Button from './../../ui/component/Button';
+import Card from './../../ui/component/Card';
+import Icon from './../../ui/component/Icon';
 import './NotFound.scss';
 const NotFound = () => {
 	const navigate = useNavigate();

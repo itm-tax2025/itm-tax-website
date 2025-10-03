@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Card from '../../ui/component/Card';
-import Divider from '../../ui/component/NonFunctional/Divider';
+import Card from './../../ui/component/Card';
+import Divider from './../../ui/component/NonFunctional/Divider';
 import './Services.scss';
-import MP4BACKGROUND from '../../assets/images/background.mp4';
+import MP4BACKGROUND from './../../assets/images/background.mp4';
 const Services = () => {
 	const [currentService, setCurrentService] = useState<string | null>(null);
 

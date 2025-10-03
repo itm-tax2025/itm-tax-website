@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Card from '../../ui/component/Card';
-import Icon from '../../ui/component/Icon';
-import Divider from '../../ui/component/NonFunctional/Divider';
+import Card from './../../ui/component/Card';
+import Icon from './../../ui/component/Icon';
+import Divider from './../../ui/component/NonFunctional/Divider';
 import './Pricing.scss';
-import { PRICING_OPTIONS } from '../../utils/constant';
-import Button from '../../ui/component/Button';
-import PHONECALL from '../../assets/animated/phone-call.gif';
+import { PRICING_OPTIONS } from './../../utils/constant';
+import Button from './../../ui/component/Button';
+import PHONECALL from './../../assets/animated/phone-call.gif';
 import { useNavigate } from 'react-router-dom';
 const Pricing = () => {
 	const navigate = useNavigate();
