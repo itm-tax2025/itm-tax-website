@@ -19,6 +19,9 @@
 }
 
 .icon {
+	&--home {
+		mask-image: url('../../../assets/icons/home.svg');
+	}
 	&--award {
 		mask-image: url('../../../assets/icons/award.svg');
 	}
