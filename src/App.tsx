@@ -35,7 +35,7 @@ const router = createBrowserRouter(
 		},
 	],
 	{
-		basename: '/itmtax',
+		basename: import.meta.env.BASE_URL,
 	}
 );
 
