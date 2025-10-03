@@ -202,6 +202,10 @@
 				flex-direction: row;
 				cursor: pointer;
 				position: relative;
+				opacity: 0;
+				--translateYStart: -100px;
+				--translateXEnd: 0;
+				animation: fadeIn 1000ms var(--cubic-bezier-ease) 500ms forwards;
 				&:nth-of-type(2) {
 					flex-direction: row-reverse;
 				}
@@ -250,7 +254,6 @@
 						text-align: center;
 						color: var(--color-text-primary);
 						border-radius: var(--border-radius-primary);
-
 						margin-top: 20px;
 						& p {
 							margin: 5px 0;
@@ -316,10 +319,6 @@
 						}
 					}
 				}
-				opacity: 0;
-				--translateYStart: -100px;
-				--translateXEnd: 0;
-				animation: fadeIn 1000ms var(--cubic-bezier-ease) 500ms forwards;
 			}
 		}
 	}
