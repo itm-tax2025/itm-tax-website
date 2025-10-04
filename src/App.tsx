@@ -35,7 +35,7 @@ const router = createBrowserRouter(
 		},
 	],
 	{
-		basename: import.meta.env.DEV ? '/' : '/itm-tax-website',
+		basename: import.meta.env.DEV ? '/' : '/itmtax',
 	}
 );
 
