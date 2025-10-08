@@ -1,0 +1,45 @@
+.hamburger-button {
+	display: flex;
+	position: relative;
+	width: 50px;
+	height: 50px;
+	z-index: 100;
+	cursor: pointer;
+}
+.bars {
+	position: relative;
+	width: 80px;
+	cursor: pointer;
+}
+.bars .line {
+	fill: none;
+	position: relative;
+	stroke: rgba(32, 32, 32, 1);
+	stroke-width: 4;
+	stroke-linecap: round;
+	transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
+}
+.bars .line.top {
+	stroke-dasharray: 40 172;
+}
+.bars .line.middle {
+	stroke-dasharray: 40 111;
+}
+.bars .line.bottom {
+	stroke-dasharray: 40 172;
+}
+.bars.active .top {
+	stroke-dashoffset: -132px;
+}
+.bars.active .middle {
+	stroke-dashoffset: -71px;
+}
+.bars.active .bottom {
+	stroke-dashoffset: -132px;
+}
+
+div.page.page--dark {
+	& .hamburger-button .line {
+		stroke: var(--white);
+	}
+}

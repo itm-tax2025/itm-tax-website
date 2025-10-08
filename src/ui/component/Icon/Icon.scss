@@ -19,6 +19,9 @@
 }
 
 .icon {
+	&--caret-down {
+		mask-image: url('../../../assets/icons/caret-down.svg');
+	}
 	&--home {
 		mask-image: url('../../../assets/icons/home.svg');
 	}

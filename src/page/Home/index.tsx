@@ -7,13 +7,52 @@ import IVY from './../../assets/images/ivy-transparent.png';
 import TONY from './../../assets/images/tony-transparent.png';
 import Divider from './../../ui/component/NonFunctional/Divider';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 const Home = () => {
 	const navigate = useNavigate();
-
 	const handleGoTo = () => {
 		navigate('/contact');
 	};
-
+	const [selectedMember, setSelectedMember] = useState<string[] | null>(null);
+	const handleViewMemeberDetails = (target: string) => {
+		if (selectedMember?.includes(target)) {
+			setSelectedMember(selectedMember.filter((item) => item !== target));
+		} else {
+			setSelectedMember(
+				selectedMember ? [...selectedMember, target] : [target]
+			);
+		}
+	};
+	const members = [
+		{
+			target: 'ivy-truong-cpa',
+			name: 'Ivy Truong, CPA',
+			role: 'Founder',
+			image: IVY,
+			intro:
+				'Ivy Truong, a Certified Public Accountant (CPA), specializes in the complex tax and advisory needs of high-net-worth individuals and business clients.',
+			highlights: [
+				'Specializes in High-Net-Worth & Small Business Clients',
+				'Complex Taxation',
+				'Focus on Strategic Tax Minimization and Wealth Transfer',
+				'Combining Large-Firm Sophistication with Boutique Service',
+			],
+		},
+		{
+			target: 'tony-hoang',
+			name: 'Tony Hoang',
+			role: 'Co-Founder',
+			image: TONY,
+			intro:
+				"Tony Hoang, Co-Founder, leads the firm's technology and digital strategy, ensuring operational efficiency and an exceptional user experience.",
+			highlights: [
+				'Expert in Tax Technology Solutions',
+				'Focus on Streamlining Operations',
+				'Enhancing Client Experience through Innovation',
+				'Bridging the Gap between Finance and Technology',
+			],
+		},
+	];
 	return (
 		<div className="home-page">
 			<section className="home-page__hero">
@@ -102,67 +141,58 @@ const Home = () => {
 					<h1>Meet Our Team</h1>
 				</div>
 				<div className="home-page__about__content">
-					<div
-						className="home-page__about__content__teammember"
-						style={{ animationDelay: '600ms' }}>
-						<div className="home-page__about__content__teammember__image home-page__about__content__teammember__image--ivy prevent-select">
-							<img src={IVY} alt="Ivy" />
-							<span className="home-page__about__content__teammember__image__info">
-								<p>Ivy Truong, CPA</p>
-								<p>Founder</p>
-							</span>
-						</div>
-						<div className="home-page__about__content__teammember__bio">
-							<p className="home-page__about__content__teammember__bio__intro">
-								Ivy Truong, a Certified Public Accountant (CPA), specializes in
-								the complex tax and advisory needs of high-net-worth individuals
-								and business clients.
-							</p>
-							<ul className="home-page__about__content__teammember__bio__highlights">
-								<li style={{ animationDelay: '100ms' }}>
-									Specializes in High-Net-Worth & Small Business Clients
-								</li>
-								<li style={{ animationDelay: '200ms' }}>Complex Taxation</li>
-								<li style={{ animationDelay: '300ms' }}>
-									Focus on Strategic Tax Minimization and Wealth Transfer
-								</li>
-								<li style={{ animationDelay: '400ms' }}>
-									Combining Large-Firm Sophistication with Boutique Service
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div
-						className="home-page__about__content__teammember"
-						style={{ animationDelay: '700ms' }}>
-						<div className="home-page__about__content__teammember__image home-page__about__content__teammember__image--tony prevent-select">
-							<img src={TONY} alt="Tony" />
-							<span className="home-page__about__content__teammember__image__info">
-								<p>Tony Hoang</p>
-								<p>Co-Founder</p>
-							</span>
-						</div>
-						<div className="home-page__about__content__teammember__bio">
-							<p className="home-page__about__content__teammember__bio__intro">
-								Tony Hoang leads the firm's strategic initiatives in technology,
-								digital content, and operational efficiency.
-							</p>
-							<ul className="home-page__about__content__teammember__bio__highlights">
-								<li style={{ animationDelay: '100ms' }}>
-									Leads Firm's Technology & Digital Strategy
-								</li>
-								<li style={{ animationDelay: '200ms' }}>
-									Specialist in Cybersecurity and Data Integrity
-								</li>
-								<li style={{ animationDelay: '300ms' }}>
-									Manages Client Portal and Digital Communication
-								</li>
-								<li style={{ animationDelay: '400ms' }}>
-									Focused on Operational Efficiency and User Experience
-								</li>
-							</ul>
-						</div>
-					</div>
+					{members.map((member, index) => (
+						<Card
+							key={'member-' + index}
+							className="home-page__about__content__teammember"
+							style={{ animationDelay: 500 + index * 100 + 'ms' }}
+							aria-details={member.target}>
+							<div
+								className={`home-page__about__content__teammember__info prevent-select`}>
+								<div className="home-page__about__content__teammember__info__image">
+									<img src={member.image} alt={member.name} />
+								</div>
+								<div className="home-page__about__content__teammember__info__title">
+									<h3>{member.name}</h3>
+									<p>{member.role}</p>
+								</div>
+								<div className="home-page__about__content__teammember__info__expand">
+									<Button
+										onClick={handleViewMemeberDetails.bind(null, member.target)}
+										className={`home-page__about__content__teammember__info__expand__button ${
+											selectedMember?.includes(member.target)
+												? 'home-page__about__content__teammember__info__expand__button--active'
+												: ''
+										}`}>
+										<p>Details</p>
+										<Icon name="caret-down" size="small" />
+									</Button>
+								</div>
+							</div>
+							<div className="home-page__about__content__teammember__intro">
+								<p>{member.intro}</p>
+							</div>
+							<div
+								className={`home-page__about__content__teammember__highlights ${
+									selectedMember?.includes(member.target)
+										? 'home-page__about__content__teammember__highlights--expanded'
+										: ''
+								}`}>
+								{selectedMember?.includes(member.target) && (
+									<Divider style="simple" />
+								)}
+								<ul>
+									{member.highlights.map((highlight, idx) => (
+										<li
+											key={'highlight-' + idx}
+											style={{ animationDelay: (idx + 1) * 100 + 'ms' }}>
+											{highlight}
+										</li>
+									))}
+								</ul>
+							</div>
+						</Card>
+					))}
 				</div>
 			</section>
 			<Divider />

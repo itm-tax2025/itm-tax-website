@@ -1,10 +1,14 @@
 @use '../../styles/animations' as *;
-
+@use '../../styles/mixins' as *;
 .services-page {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 80px;
+	background-image: url('../../assets/images/services-background.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 	& h1 {
 		position: relative;
 		font-size: 52px;
@@ -13,8 +17,7 @@
 		background-image: linear-gradient(
 			to left bottom,
 			var(--color-primary),
-			var(--color-secondary),
-			var(--white)
+			var(--color-secondary)
 		);
 		background-position: 50% 50%;
 		background-size: 200% 200%;
@@ -23,15 +26,9 @@
 		background-clip: text;
 		color: transparent;
 		animation: background-pan 5000ms var(--cubic-bezier-ease) infinite;
-	}
-	& video {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		z-index: 0;
+		@include respond-down-to('md') {
+			font-size: 42px;
+		}
 	}
 
 	&__header {
@@ -39,6 +36,9 @@
 		text-align: center;
 		margin-bottom: 40px;
 		max-width: 1000px;
+		@include respond-down-to('md') {
+			text-align: left;
+		}
 		p {
 			font-size: var(--font-size-large);
 			color: var(--color-text-primary);
@@ -49,6 +49,9 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+		@include respond-down-to('md') {
+			width: 500px;
+		}
 		&__item {
 			--translateYStart: -150px;
 			--translateYEnd: 0px;
@@ -60,6 +63,7 @@
 			transition: all 500ms var(--cubic-bezier-ease);
 			opacity: 0;
 			animation: fadeIn 1200ms var(--cubic-bezier-ease) forwards;
+			background-color: var(--white);
 			&__header {
 				font-size: 32px;
 				margin: 0 0 20px 0;
@@ -67,8 +71,7 @@
 				background-image: linear-gradient(
 					to right bottom,
 					var(--color-primary),
-					var(--color-secondary),
-					var(--white)
+					var(--color-secondary)
 				);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
@@ -134,8 +137,6 @@
 					color: var(--color-text-secondary);
 				}
 				&.active {
-					--translateYStart: 50px;
-					--translateYEnd: 0px;
 					display: flex;
 					animation: fadeIn 600ms var(--cubic-bezier-ease) forwards;
 					background-color: var(--color-primary);
@@ -168,8 +169,6 @@
 					}
 				}
 				&.active {
-					--translateYStart: 60px;
-					--translateYEnd: 0px;
 					display: flex;
 					flex-direction: column;
 					flex-grow: 0;

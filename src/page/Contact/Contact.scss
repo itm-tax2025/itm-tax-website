@@ -144,16 +144,25 @@
 				}
 			}
 		}
-		@include respond-down-to('md') {
+		@include respond-down-to('xl') {
 			& {
+				width: 90vw;
 				&__left {
 					display: none;
 				}
 				&__right {
 					width: 100%;
 					padding: 20px;
+					&__form {
+						&__group {
+							flex-direction: column;
+						}
+					}
 				}
 			}
 		}
+	}
+	#charCount {
+		margin: 10px 0 0 0;
 	}
 }

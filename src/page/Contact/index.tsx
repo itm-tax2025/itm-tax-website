@@ -8,6 +8,24 @@ import LOGO from './../../assets/images/logo.png';
 import { toast, ToastContainer } from 'react-toastify';
 const Contact = () => {
 	const [isCTAHover, setIsCTAHover] = useState(false);
+	const [formMessage, setFormMessage] = useState<string>('');
+	const [phoneNumberText, setPhoneNumberText] = useState<string>('');
+
+	const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+		setFormMessage(event.target.value);
+	};
+
+	const handleChangePhoneNumber = (
+		event: React.ChangeEvent<HTMLInputElement>
+	) => {
+		const input = event.target.value;
+		const sanitizedInput = input.replace(/\D/g, ''); // Remove non-numeric characters
+		setPhoneNumberText(sanitizedInput);
+	};
+	const maxLength = 500;
+	const currentLength = formMessage.length;
+	const remainingCharacters = maxLength - currentLength;
+
 	const firstNameRef = useRef<HTMLInputElement>(null);
 	const lastNameRef = useRef<HTMLInputElement>(null);
 	const emailRef = useRef<HTMLInputElement>(null);
@@ -63,6 +81,8 @@ const Contact = () => {
 				);
 				if (form.current) {
 					form.current.reset();
+					setFormMessage('');
+					setPhoneNumberText('');
 				}
 			} else {
 				toast.error('Failed to send message. Please try again later.', {
@@ -160,13 +180,17 @@ const Contact = () => {
 								<label htmlFor="phone">Phone Number</label>
 								<small>(e.g. 1234567890)</small>
 								<input
-									type="tel"
+									type="text"
 									id="phone"
 									name="phone"
-									pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+									inputMode="numeric"
+									pattern="[0-9]*"
 									placeholder="1234567890"
 									required
+									maxLength={10}
 									ref={phoneRef}
+									onChange={handleChangePhoneNumber}
+									value={phoneNumberText}
 								/>
 							</div>
 						</div>
@@ -184,7 +208,27 @@ const Contact = () => {
 									minLength={50}
 									required
 									ref={messageRef}
+									onChange={handleChange}
 								/>
+								<div id="charCount">
+									{currentLength < 50 && (
+										<span style={{ color: 'gray' }}>
+											Minimum 50 characters required.
+										</span>
+									)}
+									{currentLength >= maxLength && (
+										<span style={{ color: 'red' }}>
+											You have reached the maximum character limit.
+										</span>
+									)}
+
+									{currentLength >= 50 && currentLength < maxLength && (
+										<>
+											{currentLength} / {maxLength} characters used (
+											{remainingCharacters} remaining)
+										</>
+									)}
+								</div>
 							</div>
 						</div>
 						<Button

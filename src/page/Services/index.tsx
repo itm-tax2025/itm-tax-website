@@ -2,7 +2,6 @@ import { useState } from 'react';
 import Card from './../../ui/component/Card';
 import Divider from './../../ui/component/NonFunctional/Divider';
 import './Services.scss';
-import MP4BACKGROUND from './../../assets/images/background.mp4';
 const Services = () => {
 	const [currentService, setCurrentService] = useState<string | null>(null);
 
@@ -16,10 +15,6 @@ const Services = () => {
 	};
 	return (
 		<div className="services-page">
-			<video autoPlay loop muted className="services-page__background-video">
-				<source src={MP4BACKGROUND} type="video/mp4" />
-				Your browser does not support the video tag.
-			</video>
 			<h1>Our Services</h1>
 			<div className="services-page__header">
 				<p>
@@ -36,7 +31,8 @@ const Services = () => {
 					className="services-page__services__item"
 					style={{
 						animationDelay: (Math.floor(Math.random() * 7) + 1) * 100 + 'ms',
-					}}>
+					}}
+					id="tax">
 					<div className="services-page__services__item__header">
 						<h3>Individual Tax (Preparation & Planning)</h3>
 					</div>
@@ -91,7 +87,8 @@ const Services = () => {
 					className="services-page__services__item"
 					style={{
 						animationDelay: (Math.floor(Math.random() * 7) + 1) * 100 + 'ms',
-					}}>
+					}}
+					id="business">
 					<div className="services-page__services__item__header">
 						<h3>Business Tax (Entity & Owner) </h3>
 					</div>
@@ -145,7 +142,8 @@ const Services = () => {
 					className="services-page__services__item"
 					style={{
 						animationDelay: (Math.floor(Math.random() * 7) + 1) * 100 + 'ms',
-					}}>
+					}}
+					id="bookkeeping">
 					<div className="services-page__services__item__header">
 						<h3>Bookkeeping & Financial Reporting (Non‑Attest)</h3>
 					</div>
@@ -198,7 +196,8 @@ const Services = () => {
 					className="services-page__services__item"
 					style={{
 						animationDelay: (Math.floor(Math.random() * 7) + 1) * 100 + 'ms',
-					}}>
+					}}
+					id="financial">
 					<div className="services-page__services__item__header">
 						<h3>Financial Advisory</h3>
 					</div>
@@ -250,7 +249,8 @@ const Services = () => {
 					className="services-page__services__item"
 					style={{
 						animationDelay: (Math.floor(Math.random() * 7) + 1) * 100 + 'ms',
-					}}>
+					}}
+					id="retirement">
 					<div className="services-page__services__item__header">
 						<h3>Retirement Planning (Tax‑Focused)</h3>
 					</div>
@@ -305,7 +305,8 @@ const Services = () => {
 					className="services-page__services__item"
 					style={{
 						animationDelay: (Math.floor(Math.random() * 7) + 1) * 100 + 'ms',
-					}}>
+					}}
+					id="education">
 					<div className="services-page__services__item__header">
 						<h3>Tax Education & Workshops</h3>
 					</div>

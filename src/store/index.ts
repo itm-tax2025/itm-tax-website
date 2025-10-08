@@ -4,10 +4,11 @@ import type { TypedUseSelectorHook } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 
 import themeReducer from './slice/themeSlice';
-
+import displayReducer from './slice/displaySlice';
 const store = configureStore({
 	reducer: {
 		theme: themeReducer,
+		display: displayReducer,
 	},
 });
 

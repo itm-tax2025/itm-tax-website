@@ -78,3 +78,15 @@
 		}
 	}
 }
+
+.divider.divider--simple {
+	position: relative;
+	width: 100%; /* divider width */
+	margin: 40px auto; /* spacing above/below */
+	z-index: 1;
+	& div.divider__mark {
+		overflow: hidden;
+		height: 1px;
+		background-color: rgba(#fefefe, 0.5);
+	}
+}

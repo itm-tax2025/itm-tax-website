@@ -16,6 +16,11 @@ const Divider = ({ style = 'logo', text = ' ' }) => {
 						<span></span>
 					</>
 				)}
+				{style === 'simple' && (
+					<>
+						<span></span>
+					</>
+				)}
 			</div>
 		</div>
 	);

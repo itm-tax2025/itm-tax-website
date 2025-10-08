@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router-dom';
 const Pricing = () => {
 	const navigate = useNavigate();
 	const [category, setCategory] = useState<
-		'individual' | 'business' | 'retirement'
-	>('individual');
+		'' | 'individual' | 'business' | 'retirement'
+	>('');
 	const [isCTAHover, setIsCTAHover] = useState(false);
 	const iconName = 'check';
 	const iconSize = 'small';
@@ -19,7 +19,11 @@ const Pricing = () => {
 	const handleChangeCategory = (
 		newCategory: 'individual' | 'business' | 'retirement'
 	) => {
-		setCategory(newCategory);
+		if (newCategory === category) {
+			setCategory(''); // Deselect if the same category is clicked
+		} else {
+			setCategory(newCategory);
+		}
 	};
 
 	const handleCTAHover = (hover: boolean) => {
@@ -29,6 +33,30 @@ const Pricing = () => {
 	const handleGoTo = () => {
 		navigate('/contact');
 	};
+
+	const services = [
+		{
+			target: 'individual',
+			title: 'Individual',
+			subtitle: 'Stress-free tax filing made simple',
+			description:
+				'Accurate returns, timely filing, and peace of mind for professionals and families.',
+		},
+		{
+			target: 'business',
+			title: 'Business',
+			subtitle: 'All-in-one care for your business.',
+			description:
+				'Bookkeeping, payroll, and tax planning; everything you need to keep your business compliant and growing.',
+		},
+		{
+			target: 'retirement',
+			title: 'Tax & Retirement Planning',
+			subtitle: 'Strategies for a secure financial future.',
+			description:
+				'Comprehensive retirement planning, tax strategies, and tax efficiency to secure your financial future.',
+		},
+	];
 
 	return (
 		<div className="pricing-page">
@@ -50,58 +78,33 @@ const Pricing = () => {
 				<h2>Let's choose the package that fits you best:</h2>
 			</div>
 			<div className="pricing-page__options">
-				<Card
-					className={`pricing-page__options__item ${
-						category === 'individual'
-							? 'pricing-page__options__item--selected'
-							: ''
-					}`}
-					onClick={() => handleChangeCategory('individual')}>
-					<h2 className="prevent-select">Individual</h2>
-					<p className="pricing-page__options__item__subtitle">
-						<i>Stress-free tax filing made simple</i>
-					</p>
-					<p>
-						Accurate returns, timely filing, and peace of mind for professionals
-						and families.
-					</p>
-				</Card>
-				<Card
-					className={`pricing-page__options__item ${
-						category === 'business'
-							? 'pricing-page__options__item--selected'
-							: ''
-					}`}
-					onClick={() => handleChangeCategory('business')}>
-					<h2 className="prevent-select">Business</h2>
-					<p className="pricing-page__options__item__subtitle">
-						<i>All-in-one care for your business.</i>
-					</p>
-					<p>
-						Bookkeeping, payroll, and tax planning; everything you need to keep
-						your business compliant and growing.
-					</p>
-				</Card>
-				<Card
-					className={`pricing-page__options__item ${
-						category === 'retirement'
-							? 'pricing-page__options__item--selected'
-							: ''
-					}`}
-					onClick={() => handleChangeCategory('retirement')}>
-					<h2 className="prevent-select">Tax & Retirement Planning</h2>
-					<p className="pricing-page__options__item__subtitle">
-						<i>
-							Tax strategies and retirement planning designed for your future.
-						</i>
-					</p>
-					<p>
-						Comprehensive retirement planning, tax strategies, and tax
-						efficiency to secure your financial future.
-					</p>
-				</Card>
+				{services.map((service, index) => (
+					<Card
+						key={`${service.title}-${index}`}
+						className={`pricing-page__options__item ${
+							category === service.target.toLowerCase()
+								? 'pricing-page__options__item--selected'
+								: ''
+						} ${
+							category !== service.target && category !== ''
+								? 'pricing-page__options__item--hide'
+								: ''
+						}`}
+						onClick={() =>
+							handleChangeCategory(
+								service.target as 'individual' | 'business' | 'retirement'
+							)
+						}>
+						<h2 className="prevent-select">{service.title}</h2>
+						<p className="pricing-page__options__item__subtitle">
+							<i>{service.subtitle}</i>
+						</p>
+						<p>{service.description}</p>
+					</Card>
+				))}
 			</div>
 			<div className="pricing-page__selected">
+				{category === '' && <p>Please select a category to see the details.</p>}
 				{category === 'individual' && (
 					<>
 						<div className="pricing-page__selected__details">
@@ -147,7 +150,6 @@ const Pricing = () => {
 											</div>
 										</li>
 									</ul>
-									<div className="decor"></div>
 								</Card>
 								<Card
 									className={`pricing-page__selected__details__price__item`}
@@ -201,7 +203,6 @@ const Pricing = () => {
 											</div>
 										</li>
 									</ul>
-									<div className="decor"></div>
 								</Card>
 								<Card
 									className={`pricing-page__selected__details__price__item`}>
@@ -255,7 +256,6 @@ const Pricing = () => {
 											</div>
 										</li>
 									</ul>
-									<div className="decor"></div>
 								</Card>
 							</div>
 						</div>
@@ -404,7 +404,6 @@ const Pricing = () => {
 											</div>
 										</li>
 									</ul>
-									<div className="decor"></div>
 								</Card>
 								<Card
 									className="pricing-page__selected__details__price__item"
@@ -540,7 +539,6 @@ const Pricing = () => {
 											</div>
 										</li>
 									</ul>
-									<div className="decor"></div>
 								</Card>
 								<Card
 									className="pricing-page__selected__details__price__item"
@@ -636,7 +634,6 @@ const Pricing = () => {
 											</div>
 										</li>
 									</ul>
-									<div className="decor"></div>
 								</Card>
 							</div>
 						</div>
