@@ -1,0 +1,32 @@
+{
+	"sitemap": [
+		{
+			"path": "/",
+			"title": "Home"
+		},
+		{
+			"path": "/about",
+			"title": "About"
+		},
+		{
+			"path": "/services",
+			"title": "Services"
+		},
+		{
+			"path": "/contact",
+			"title": "Contact"
+		},
+		{
+			"path": "/disclosures",
+			"title": "Disclosures"
+		},
+		{
+			"path": "/cookies",
+			"title": "Cookies"
+		},
+		{
+			"path": "/sitemap",
+			"title": "Sitemap"
+		}
+	]
+}
