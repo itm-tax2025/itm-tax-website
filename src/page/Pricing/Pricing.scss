@@ -7,6 +7,17 @@
 	flex-direction: column;
 	align-items: center;
 	padding: 80px 0 0 0;
+	background-image: linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 0.8),
+			rgba(242, 242, 242, 0.8)
+		),
+		url('./../../assets/images/pricing-background.png');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+
 	& h1 {
 		position: relative;
 		font-size: 52px;
@@ -23,22 +34,41 @@
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 		color: transparent;
-		animation: background-shift 5000ms var(--cubic-bezier-ease) infinite;
+		opacity: 0;
+		--translateYStart: -50px;
+		--translateYEnd: 0px;
+		animation: fadeIn 500ms var(--cubic-bezier-ease) forwards;
 	}
 	&__header {
 		position: relative;
 		text-align: center;
 		margin-bottom: 20px;
 		max-width: 1000px;
+		opacity: 0;
+		--translateYStart: 50px;
+		--translateYEnd: 0px;
+		animation: fadeIn 500ms var(--cubic-bezier-ease) forwards;
 		& h4 {
 			font-size: var(--font-size-medium);
 			font-style: italic;
 			color: var(--color-text-secondary);
 			margin-bottom: 10px;
+			opacity: 0;
+			--translateXStart: -50px;
+			--translateXEnd: 0px;
+			--translateYStart: 0px;
+			--translateYEnd: 0px;
+			animation: fadeIn 500ms var(--cubic-bezier-ease) 500ms forwards;
 		}
 		& p {
 			font-size: var(--font-size-large);
 			color: var(--color-text-primary);
+			opacity: 0;
+			--translateXStart: 50px;
+			--translateXEnd: 0px;
+			--translateYStart: 0px;
+			--translateYEnd: 0px;
+			animation: fadeIn 500ms var(--cubic-bezier-ease) 500ms forwards;
 		}
 		@include respond-down-to('md') {
 			& p {
@@ -56,6 +86,10 @@
 		h2 {
 			color: var(--color-primary);
 			font-weight: 600;
+			opacity: 0;
+			--translateYStart: 50px;
+			--translateYEnd: 0px;
+			animation: fadeIn 500ms var(--cubic-bezier-ease) 800ms forwards;
 			&:hover {
 				color: var(--color-secondary);
 			}
@@ -66,7 +100,6 @@
 		flex-direction: row;
 		flex-wrap: wrap;
 		cursor: pointer;
-
 		&__item {
 			display: flex;
 			flex-direction: column;
@@ -84,6 +117,10 @@
 			);
 			background-size: 400% 400%;
 			background-position: 0% 50%;
+			opacity: 0;
+			--translateXStart: 50px;
+			--translateXEnd: 0px;
+			animation: fadeIn 500ms var(--cubic-bezier-ease) 1000ms forwards;
 			& h2 {
 				font-size: 24px;
 				width: 100%;
@@ -95,6 +132,7 @@
 				margin-bottom: 10px;
 			}
 			&--selected {
+				opacity: 1;
 				& h2 {
 					color: var(--white);
 				}
@@ -153,6 +191,7 @@
 					animation: fadeIn 1500ms var(--cubic-bezier-ease) forwards;
 					overflow: hidden;
 					box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
+
 					&:first-child {
 						margin-right: 30px;
 					}
@@ -244,7 +283,7 @@
 						}
 						& span {
 							font-size: var(--font-size-medium);
-							color: var(--color-text-disabled);
+							color: var(--color-text-secondary);
 							text-align: center;
 							margin-bottom: 20px;
 							font-style: italic;
@@ -519,7 +558,7 @@
 			& button {
 				display: flex;
 				height: 60px;
-				transition: all 3000ms var(--cubic-bezier-ease);
+				transition: all 500ms var(--cubic-bezier-ease);
 				box-shadow: var(--box-shadow-primary);
 				& img {
 					width: 22px;

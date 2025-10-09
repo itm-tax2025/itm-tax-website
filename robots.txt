@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://itmtax.com/page/Sitemap/sitemap.xml

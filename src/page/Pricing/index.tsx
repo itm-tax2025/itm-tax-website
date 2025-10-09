@@ -7,6 +7,7 @@ import { PRICING_OPTIONS } from './../../utils/constant';
 import Button from './../../ui/component/Button';
 import PHONECALL from './../../assets/animated/phone-call.gif';
 import { useNavigate } from 'react-router-dom';
+import { smoothScrollTo } from '../../utils/window';
 const Pricing = () => {
 	const navigate = useNavigate();
 	const [category, setCategory] = useState<
@@ -32,6 +33,7 @@ const Pricing = () => {
 
 	const handleGoTo = () => {
 		navigate('/contact');
+		smoothScrollTo(0, 300);
 	};
 
 	const services = [
@@ -94,7 +96,8 @@ const Pricing = () => {
 							handleChangeCategory(
 								service.target as 'individual' | 'business' | 'retirement'
 							)
-						}>
+						}
+						style={{ animationDelay: `${index * 100 + 500}ms` }}>
 						<h2 className="prevent-select">{service.title}</h2>
 						<p className="pricing-page__options__item__subtitle">
 							<i>{service.subtitle}</i>
@@ -272,7 +275,15 @@ const Pricing = () => {
 											</div>
 											<div>
 												<p>
-													Additional Schedule C: <strong>$150 each</strong>
+													Additional Schedule C:{' '}
+													<strong>
+														$
+														{
+															PRICING_OPTIONS.INDIVIDUAL.ADD_ONS
+																.ADDITIONAL_SCHEDULE_C
+														}{' '}
+														each
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -282,7 +293,15 @@ const Pricing = () => {
 											</div>
 											<div>
 												<p>
-													Additional state: <strong>$150 each</strong>
+													Additional state:{' '}
+													<strong>
+														$
+														{
+															PRICING_OPTIONS.INDIVIDUAL.ADD_ONS
+																.ADDITIONAL_STATE
+														}{' '}
+														each
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -294,7 +313,11 @@ const Pricing = () => {
 											</div>
 											<div>
 												<p>
-													Additional K-1: <strong>$125 each</strong>
+													Additional K-1:{' '}
+													<strong>
+														${PRICING_OPTIONS.INDIVIDUAL.ADD_ONS.ADDITIONAL_K_1}{' '}
+														each
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -304,7 +327,15 @@ const Pricing = () => {
 											</div>
 											<div>
 												<p>
-													Additional rental: <strong>$150 each</strong>
+													Additional rental:{' '}
+													<strong>
+														$
+														{
+															PRICING_OPTIONS.INDIVIDUAL.ADD_ONS
+																.ADDITIONAL_RENTAL
+														}{' '}
+														each
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -317,7 +348,14 @@ const Pricing = () => {
 											<div>
 												<p>
 													Additional brokerage account:{' '}
-													<strong>$50 each</strong>
+													<strong>
+														$
+														{
+															PRICING_OPTIONS.INDIVIDUAL.ADD_ONS
+																.ADDITIONAL_BROKERAGE_ACCOUNT
+														}{' '}
+														each
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -328,7 +366,9 @@ const Pricing = () => {
 											<div>
 												<p>
 													Crypto summary (100 - 500 transactions):{' '}
-													<strong>$300</strong>
+													<strong>
+														${PRICING_OPTIONS.INDIVIDUAL.ADD_ONS.CRYPTO_SUMMARY}
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -625,7 +665,7 @@ const Pricing = () => {
 																$
 																{
 																	PRICING_OPTIONS.BUSINESS.TAX_PREPARATION
-																		.PARTNERSHIP_SIMPLE
+																		.C_CORP_STANDARD
 																}
 															</p>
 														</div>
@@ -650,7 +690,15 @@ const Pricing = () => {
 											</div>
 											<div>
 												<p>
-													Franchise Tax report: <strong>$200 each</strong>
+													Franchise Tax report:{' '}
+													<strong>
+														$
+														{
+															PRICING_OPTIONS.BUSINESS.ADD_ONS
+																.FRANCHISE_TAX_REPORT
+														}{' '}
+														each
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -661,7 +709,14 @@ const Pricing = () => {
 											<div>
 												<p>
 													Multi-state apportionment:
-													<strong>$200/ state</strong>
+													<strong>
+														$
+														{
+															PRICING_OPTIONS.BUSINESS.ADD_ONS
+																.MULTI_STATE_APPORTIONMENT
+														}
+														/ state
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -674,7 +729,10 @@ const Pricing = () => {
 											<div>
 												<p>
 													Additional Owner K-1 beyond 2:{' '}
-													<strong>$100 each</strong>
+													<strong>
+														${PRICING_OPTIONS.BUSINESS.ADD_ONS.ADDITIONAL_K_1}{' '}
+														each
+													</strong>
 												</p>
 											</div>
 										</div>
@@ -703,7 +761,9 @@ const Pricing = () => {
 							Tax & Retirement Planning
 						</h2>
 						<Card className="pricing-page__selected__details__price__item pricing-page__selected__details__price__item--single">
-							<div>$200 per hour</div>
+							<div>
+								${PRICING_OPTIONS.RETIREMENT.PLANNING_HOURLY_RATE} per hour
+							</div>
 							<div>
 								Advisory services including tax planning, retirement planning.
 								Minimum one-hour engagement.

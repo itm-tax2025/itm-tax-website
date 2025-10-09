@@ -6,6 +6,11 @@ import NotFound from './page/NotFound';
 import Services from './page/Services';
 import Pricing from './page/Pricing';
 import Contact from './page/Contact';
+import Privacy from './page/Privacy';
+import Cookies from './page/Cookies';
+import Disclosures from './page/Disclosures';
+import Terms from './page/Terms';
+import Sitemap from './page/Sitemap';
 const router = createBrowserRouter(
 	[
 		{
@@ -28,7 +33,27 @@ const router = createBrowserRouter(
 					element: <Contact />,
 				},
 				{
-					path: '*',
+					path: '/privacy',
+					element: <Privacy />,
+				},
+				{
+					path: '/cookies',
+					element: <Cookies />,
+				},
+				{
+					path: '/disclosures',
+					element: <Disclosures />,
+				},
+				{
+					path: '/terms',
+					element: <Terms />,
+				},
+				{
+					path: '/sitemap',
+					element: <Sitemap />,
+				},
+				{
+					path: '/*',
 					element: <NotFound />,
 				},
 			],
