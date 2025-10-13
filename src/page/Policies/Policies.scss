@@ -1,3 +1,6 @@
+@use './../../styles/variables' as *;
+@use './../../styles/mixins' as *;
+
 .policy-page {
 	display: flex;
 	flex-direction: column;
@@ -11,7 +14,7 @@
 	background-color: var(--color-background-secondary);
 	border-radius: 8px;
 	box-shadow: var(--box-shadow-primary);
-    position: relative;
+	position: relative;
 	h1,
 	h2,
 	h3 {
@@ -50,15 +53,15 @@
 		margin: 20px 0;
 	}
 	.policy-page__back-to-top {
-        display: flex;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        &:hover{
-            cursor: pointer;
-            text-decoration: underline;
-        }
-    }
+		display: flex;
+		width: 100%;
+		height: 100%;
+		justify-content: center;
+		&:hover {
+			cursor: pointer;
+			text-decoration: underline;
+		}
+	}
 }
 .policy-page__navigation {
 	display: flex;
@@ -84,5 +87,11 @@
 			color: #fff;
 			border-color: var(--color-primary);
 		}
+	}
+}
+@include respond-down-to('md') {
+	.policy-page__navigation {
+		flex-direction: column;
+		align-items: center;
 	}
 }
