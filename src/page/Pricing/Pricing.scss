@@ -150,6 +150,10 @@
 			}
 		}
 
+		@include respond-down-to('4xl') {
+			flex-direction: column;
+		}
+
 		@include respond-down-to('md') {
 			&__item {
 				width: 400px;
