@@ -3,30 +3,57 @@ import Button from './../../ui/component/Button';
 import Card from './../../ui/component/Card';
 import Icon from './../../ui/component/Icon';
 import './NotFound.scss';
+import { useAppSelector } from '../../store';
+
 const NotFound = () => {
 	const navigate = useNavigate();
+	const language = useAppSelector((state) => state.theme.language);
+
+	const t =
+		language === 'en'
+			? {
+					title: 'SYSTEM ERROR: UNABLE TO RECONCILE',
+					subtitle:
+						"The requested asset number could not be located in our current index. We've flagged this transaction as **404: Record Missing**.",
+					status: 'STATUS',
+					hash: 'TRANSACTION HASH',
+					account: 'ACCOUNT CODE',
+					button: 'Re-Route to Main Ledger (Homepage)',
+					footer:
+						'If the problem persists, please check your network connection or contact technical support.',
+			  }
+			: {
+					title: 'LỖI HỆ THỐNG: KHÔNG THỂ ĐỐI SOÁT',
+					subtitle:
+						'Không tìm thấy mã tài sản được yêu cầu trong chỉ mục hiện tại. Giao dịch này đã được đánh dấu là **404: Không tìm thấy bản ghi**.',
+					status: 'TRẠNG THÁI',
+					hash: 'MÃ GIAO DỊCH',
+					account: 'MÃ TÀI KHOẢN',
+					button: 'Điều hướng về Sổ cái chính (Trang chủ)',
+					footer:
+						'Nếu lỗi vẫn tiếp diễn, vui lòng kiểm tra kết nối mạng hoặc liên hệ bộ phận hỗ trợ kỹ thuật.',
+			  };
+
 	const handleGoHome = () => {
 		navigate('/');
 	};
+
 	return (
 		<div className="not-found-page">
 			<Card className="not-found-page__card">
-				<h1 className="not-found-page__title">
-					SYSTEM ERROR: UNABLE TO RECONCILE
-				</h1>
+				<h1 className="not-found-page__title">{t.title}</h1>
+
 				<div className="not-found-page__subtitle">
-					<h3>
-						The requested asset number could not be located in our current
-						index. We've flagged this transaction as **404: Record Missing**.
-					</h3>
+					<h3>{t.subtitle}</h3>
 				</div>
+
 				<div className="not-found-page__table-container">
 					<table className="not-found-page__table-container__table">
 						<thead>
 							<tr>
-								<th>STATUS</th>
-								<th>TRANSACTION HASH</th>
-								<th>ACCOUNT CODE</th>
+								<th>{t.status}</th>
+								<th>{t.hash}</th>
+								<th>{t.account}</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -53,20 +80,19 @@ const NotFound = () => {
 						</tbody>
 					</table>
 				</div>
+
 				<div className="not-found-page__button-container">
 					<Button onClick={handleGoHome}>
 						<div>
 							<Icon name="home" size="large" />
 						</div>
 						<div>
-							<p>Re-Route to Main Ledger (Homepage)</p>
+							<p>{t.button}</p>
 						</div>
 					</Button>
 				</div>
-				<p className="not-found-page__footer">
-					If the problem persists, please check your network connection or
-					contact technical support.
-				</p>
+
+				<p className="not-found-page__footer">{t.footer}</p>
 			</Card>
 		</div>
 	);

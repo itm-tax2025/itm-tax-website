@@ -22,6 +22,7 @@ const HomeLayout: React.FC<unknown> = () => {
 	const headbarOpen = useAppSelector((state) => state.display.headbarOpen);
 	const targetId = location.hash;
 	const currentYear = new Date().getFullYear();
+	const language = useAppSelector((state) => state.theme.language);
 
 	const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 		const currentPagePath = e.currentTarget.pathname;
@@ -47,6 +48,19 @@ const HomeLayout: React.FC<unknown> = () => {
 		smoothScrollTo(0, 300);
 	};
 
+	const handleGoToTaxPortal = () => {
+		window.open(
+			'https://itmtax.taxdome.com/login?',
+			'_blank',
+			'noopener noreferrer'
+		);
+	};
+
+	const handleChangeLanguage = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const selectedLanguage = e.target.value;
+		dispatch({ type: 'theme/setLanguage', payload: selectedLanguage });
+	};
+
 	useEffect(() => {
 		if (headbarOpen) {
 			smoothScrollTo(0, 300);
@@ -60,23 +74,54 @@ const HomeLayout: React.FC<unknown> = () => {
 	}, [targetId, headbarOpen]);
 
 	const navLinks = [
-		{ name: 'Home', path: '/' },
-		{ name: 'About', path: '/#about' },
-		{ name: 'Services', path: '/services' },
-		{ name: 'Pricing', path: '/pricing' },
+		{ name: language === 'en' ? 'Home' : 'Trang Chủ', path: '/' },
+		{ name: language === 'en' ? 'About' : 'Giới Thiệu', path: '/#about' },
+		{ name: language === 'en' ? 'Services' : 'Dịch Vụ', path: '/services' },
+		{ name: language === 'en' ? 'Pricing' : 'Bảng Giá', path: '/pricing' },
 	];
 
 	const servicesProvided = [
-		{ name: 'Tax', path: '/services#tax' },
-		{ name: 'Bookkeeping - Payroll', path: '/services#bookkeeping' },
-		{ name: 'Advisory - Planning', path: '/services#advisory-planning' },
+		{ name: language === 'en' ? 'Tax' : 'Thuế', path: '/services#tax' },
+		{
+			name:
+				language === 'en' ? 'Bookkeeping - Payroll' : 'Kế Toán - Bảng Lương',
+			path: '/services#bookkeeping',
+		},
+		{
+			name: language === 'en' ? 'Advisory - Planning' : 'Tư Vấn - Lập Kế Hoạch',
+			path: '/services#advisory-planning',
+		},
 	];
 
 	const clientResources = [
-		{ name: 'Secure Client Portal Access', path: '#' },
-		{ name: 'Document Upload & E-Signature', path: '#' },
-		{ name: 'Tax Calendars & Deadlines', path: '#' },
-		{ name: 'Educational Articles & FAQs', path: '#' },
+		{
+			name:
+				language === 'en'
+					? 'Secure Client Portal Access'
+					: 'Truy Cập Cổng Thông Tin Khách Hàng Bảo Mật',
+			path: '#',
+		},
+		{
+			name:
+				language === 'en'
+					? 'Document Upload & E-Signature'
+					: 'Tải Tài Liệu Lên & Chữ Ký Điện Tử',
+			path: '#',
+		},
+		{
+			name:
+				language === 'en'
+					? 'Tax Calendars & Deadlines'
+					: 'Lịch Thuế & Hạn Chót',
+			path: '#',
+		},
+		{
+			name:
+				language === 'en'
+					? 'Educational Articles & FAQs'
+					: 'Bài Viết Giáo Dục & Câu Hỏi Thường Gặp',
+			path: '#',
+		},
 	];
 
 	const socialMedia = [
@@ -102,18 +147,27 @@ const HomeLayout: React.FC<unknown> = () => {
 		},
 		{
 			type: 'hours',
-			value: 'Mon-Fri: 9am - 5pm',
+			value:
+				language === 'en'
+					? 'Mon-Fri: 9am - 5pm'
+					: 'Thứ Hai - Thứ Sáu: 9 giờ sáng - 5 giờ chiều',
 			path: '#',
 			icon: <LucideHourglass size={24} strokeWidth={2} />,
 		},
 	];
 
 	const additionalLinks = [
-		{ name: 'Privacy', path: '/privacy' },
-		{ name: 'Terms', path: '/terms' },
-		{ name: 'Disclosures', path: '/disclosures' },
-		{ name: 'Cookies', path: '/cookies' },
-		{ name: 'Sitemap', path: '/sitemap' },
+		{
+			name: language === 'en' ? 'Privacy' : 'Quyền Riêng Tư',
+			path: '/privacy',
+		},
+		{ name: language === 'en' ? 'Terms' : 'Điều Khoản', path: '/terms' },
+		{
+			name: language === 'en' ? 'Disclosures' : 'Công Khai',
+			path: '/disclosures',
+		},
+		{ name: language === 'en' ? 'Cookies' : 'Lưu Trữ', path: '/cookies' },
+		{ name: language === 'en' ? 'Sitemap' : 'Sơ Đồ', path: '/sitemap' },
 	];
 
 	const NavMenu = () => {
@@ -137,7 +191,12 @@ const HomeLayout: React.FC<unknown> = () => {
 						className="home-layout__header__nav__cta prevent-select"
 						style={{ animationDelay: `${navLinks.length * 150}ms` }}>
 						<Button onClick={handleGoto}>
-							<p>Request a Quote</p>
+							{language === 'en' && <p>Request a Quote</p>}
+							{language === 'vn' && <p>Yêu Cầu Báo Giá</p>}
+						</Button>
+						<Button onClick={handleGoToTaxPortal}>
+							<span>Already a Client?</span>
+							<span>Login now</span>
 						</Button>
 					</div>
 				</div>
@@ -155,7 +214,26 @@ const HomeLayout: React.FC<unknown> = () => {
 							<img src={LOGO} alt="logo" />
 						</NavLink>
 					</div>
+
 					<ul className={`home-layout__header__nav__links`}>
+						<li>
+							<div className="home-layout__header__nav__language prevent-select">
+								<select onChange={handleChangeLanguage} value={language}>
+									{language === 'en' && (
+										<>
+											<option value="en">English - EN</option>
+											<option value="vn">Vietnamese - VN</option>
+										</>
+									)}
+									{language === 'vn' && (
+										<>
+											<option value="en">Tiếng Anh - EN</option>
+											<option value="vn">Tiếng Việt - VN</option>
+										</>
+									)}
+								</select>
+							</div>
+						</li>
 						{navLinks.map((link, index) => (
 							<li
 								key={'main-menu-link-' + index}
@@ -168,9 +246,15 @@ const HomeLayout: React.FC<unknown> = () => {
 					</ul>
 					<div className="home-layout__header__nav__cta prevent-select">
 						<Button onClick={handleGoto}>
-							<p>Request a Quote</p>
+							{language === 'en' && <p>Request a Quote</p>}
+							{language === 'vn' && <p>Yêu Cầu Báo Giá</p>}
+						</Button>
+						<Button onClick={handleGoToTaxPortal}>
+							<span>Already a Client?</span>
+							<span>Login now</span>
 						</Button>
 					</div>
+
 					<HamburgerButton className="home-layout__header__nav__hamburger" />
 				</nav>
 			</header>
@@ -184,10 +268,24 @@ const HomeLayout: React.FC<unknown> = () => {
 							<img src={GRAYSCALELOGO} alt="logo" />
 							<div className="home-layout__footer__info__general__social">
 								<div className="home-layout__footer__info__general__social__text">
-									<h3>Want updates that matter?</h3>
-									<p>
-										Follow us on social media for the latest updates and news.
-									</p>
+									{language === 'en' && (
+										<>
+											<h3>Want updates that matter?</h3>
+											<p>
+												Follow us on social media for the latest updates and
+												news.
+											</p>
+										</>
+									)}
+									{language === 'vn' && (
+										<>
+											<h3>Muốn nhận các cập nhật quan trọng?</h3>
+											<p>
+												Theo dõi chúng tôi trên mạng xã hội để nhận các cập nhật
+												và tin tức mới nhất.
+											</p>
+										</>
+									)}
 								</div>
 								<div className="home-layout__footer__info__general__social__links">
 									{socialMedia.map((social, index) => (
@@ -207,7 +305,7 @@ const HomeLayout: React.FC<unknown> = () => {
 					<div className="home-layout__footer__info__section">
 						<div className="home-layout__footer__info__text">
 							<h4 className="home-layout__footer__info__text__header">
-								SERVICES
+								{language === 'en' ? 'SERVICES' : 'DỊCH VỤ'}
 							</h4>
 							<ul className="home-layout__footer__info__text__list">
 								{servicesProvided.map((service, index) => (
@@ -221,7 +319,9 @@ const HomeLayout: React.FC<unknown> = () => {
 						</div>
 						<div className="home-layout__footer__info__text">
 							<h4 className="home-layout__footer__info__text__header">
-								CLIENT RESOURCES
+								{language === 'en'
+									? 'CLIENT RESOURCES'
+									: 'TÀI NGUYÊN KHÁCH HÀNG'}
 							</h4>
 							<ul className="home-layout__footer__info__text__list">
 								{clientResources.map((resource, index) => (
@@ -233,7 +333,7 @@ const HomeLayout: React.FC<unknown> = () => {
 						</div>
 						<div className="home-layout__footer__info__text">
 							<h4 className="home-layout__footer__info__text__header">
-								CONTACT
+								{language === 'en' ? 'CONTACT' : 'LIÊN HỆ'}
 							</h4>
 							<ul className="home-layout__footer__info__text__list">
 								{contactInfo.map((contact, index) => (
@@ -249,19 +349,45 @@ const HomeLayout: React.FC<unknown> = () => {
 							</ul>
 						</div>
 						<div className="home-layout__footer__info__text home-layout__footer__info__text--cta prevent-select">
-							<h4>GET STARTED</h4>
-							<p>Schedule a free 15-minute consultation to review your goals</p>
-							<Button onClick={handleGoto}>Book a Consultation</Button>
-							<p>Serving individuals and small businesses across the U.S.</p>
+							{language === 'en' && (
+								<>
+									<h4>GET STARTED</h4>
+									<p>
+										Schedule a free 15-minute consultation to review your goals
+									</p>
+									<Button onClick={handleGoto}>Book a Consultation</Button>
+									<p>
+										Serving individuals and small businesses across the U.S.
+									</p>
+								</>
+							)}
+							{language === 'vn' && (
+								<>
+									<h4>BẮT ĐẦU NGAY</h4>
+									<p>
+										Lên lịch tư vấn miễn phí 15 phút để xem xét các mục tiêu của
+										bạn
+									</p>
+									<Button onClick={handleGoto}>Đặt Lịch Tư Vấn</Button>
+									<p>Phục vụ cá nhân và doanh nghiệp nhỏ trên toàn nước Mỹ.</p>
+								</>
+							)}
 						</div>
 					</div>
 				</div>
 				<div className="home-layout__footer__copyright">
 					<div className="home-layout__footer__copyright__group home-layout__footer__copyright__group--top">
 						<div className="home-layout__footer__copyright__left">
-							<p>
-								© {currentYear} ITM Tax & Advisory, LLC. All rights reserved.
-							</p>
+							{language === 'en' && (
+								<p>
+									© {currentYear} ITM Tax & Advisory, LLC. All rights reserved.
+								</p>
+							)}
+							{language === 'vn' && (
+								<p>
+									© {currentYear} ITM Tax & Advisory, LLC. Bảo lưu mọi quyền.
+								</p>
+							)}
 						</div>
 						<div className="home-layout__footer__copyright__right">
 							{additionalLinks.map((link, index) => (
@@ -278,11 +404,21 @@ const HomeLayout: React.FC<unknown> = () => {
 					</div>
 					<div className="home-layout__footer__copyright__group home-layout__footer__copyright__group--bottom">
 						<div className="home-layout__footer__copyright__bottom">
-							<p>
-								Disclaimer: Content is for informational purposes only and does
-								not constitute legal or tax advice. Consult a qualified
-								professional regarding your specific situation.
-							</p>
+							{language === 'en' && (
+								<p>
+									Disclaimer: Content is for informational purposes only and
+									does not constitute legal or tax advice. Consult a qualified
+									professional regarding your specific situation.
+								</p>
+							)}
+							{language === 'vn' && (
+								<p>
+									Tuyên bố từ chối trách nhiệm: Nội dung chỉ mang tính chất
+									thông tin và không cấu thành lời khuyên pháp lý hoặc thuế. Hãy
+									tham khảo ý kiến của một trong những chuyên gia của chúng tôi
+									về tình hình cụ thể của bạn.
+								</p>
+							)}
 						</div>
 					</div>
 				</div>
