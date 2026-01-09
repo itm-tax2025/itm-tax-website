@@ -198,6 +198,22 @@ const HomeLayout: React.FC<unknown> = () => {
 							<span>Already a Client?</span>
 							<span>Login now</span>
 						</Button>
+						<div className="home-layout__header__nav__language prevent-select">
+							<select onChange={handleChangeLanguage} value={language}>
+								{language === 'en' && (
+									<>
+										<option value="en">English - EN</option>
+										<option value="vn">Vietnamese - VN</option>
+									</>
+								)}
+								{language === 'vn' && (
+									<>
+										<option value="en">Tiếng Anh - EN</option>
+										<option value="vn">Tiếng Việt - VN</option>
+									</>
+								)}
+							</select>
+						</div>
 					</div>
 				</div>
 			</Portal>

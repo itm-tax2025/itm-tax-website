@@ -122,8 +122,8 @@ const CONTENT: Record<
 				],
 			},
 			{
-				target: 'tony-hoang',
-				name: 'Tony Hoang',
+				target: 'tony-hoang-ea',
+				name: 'Tony Hoang, EA',
 				role: 'Co-Founder',
 				image: TONY,
 				intro:
@@ -219,8 +219,8 @@ const CONTENT: Record<
 				],
 			},
 			{
-				target: 'tony-hoang',
-				name: 'Tony Hoang',
+				target: 'tony-hoang-ea',
+				name: 'Tony Hoang, EA',
 				role: 'Đồng sáng lập',
 				image: TONY,
 				intro:
