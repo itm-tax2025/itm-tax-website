@@ -195,8 +195,18 @@ const HomeLayout: React.FC<unknown> = () => {
 							{language === 'vn' && <p>Yêu Cầu Báo Giá</p>}
 						</Button>
 						<Button onClick={handleGoToTaxPortal}>
-							<span>Already a Client?</span>
-							<span>Login now</span>
+							{language === 'en' && (
+								<>
+									<span>Already a Client?</span>
+									<span>Login now</span>
+								</>
+							)}
+							{language === 'vn' && (
+								<>
+									<span>Đã là khách hàng?</span>
+									<span>Đăng nhập ngay</span>
+								</>
+							)}
 						</Button>
 						<div className="home-layout__header__nav__language prevent-select">
 							<select onChange={handleChangeLanguage} value={language}>
@@ -266,8 +276,18 @@ const HomeLayout: React.FC<unknown> = () => {
 							{language === 'vn' && <p>Yêu Cầu Báo Giá</p>}
 						</Button>
 						<Button onClick={handleGoToTaxPortal}>
-							<span>Already a Client?</span>
-							<span>Login now</span>
+							{language === 'en' && (
+								<>
+									<span>Already a Client?</span>
+									<span>Login now</span>
+								</>
+							)}
+							{language === 'vn' && (
+								<>
+									<span>Đã là khách hàng?</span>
+									<span>Đăng nhập ngay</span>
+								</>
+							)}
 						</Button>
 					</div>
 
