@@ -194,13 +194,21 @@ const Pricing = () => {
 
 			<div className="pricing-page__header">
 				<div>
-					<h4>{t('Clear, Simple, and Tailored to You.', 'Rõ Ràng, Đơn Giản và Phù Hợp Với Bạn.')}</h4>
+					<h4>
+						{t(
+							'Clear, Simple, and Tailored to You.',
+							'Rõ Ràng, Đơn Giản và Phù Hợp Với Bạn.'
+						)}
+					</h4>
 					<p>
 						{t(
 							'At ITM Tax & Advisory, we believe pricing should never feel complicated or hidden. That’s why we have designed three straightforward options to fit your needs, whether you’re an individual looking for peace of mind at tax time, a small business seeking full-circle support, or someone with unique needs who',
 							'Tại ITM Tax & Advisory, chúng tôi tin rằng giá cả không bao giờ nên cảm thấy phức tạp hoặc ẩn giấu. Đó là lý do tại sao chúng tôi đã thiết kế ba lựa chọn đơn giản để phù hợp với nhu cầu của bạn, dù bạn là cá nhân tìm kiếm sự yên tâm vào thời điểm khai thuế, doanh nghiệp nhỏ cần hỗ trợ toàn diện, hay ai đó có nhu cầu đặc biệt cần'
 						)}
-						{t('deserves a custom solution.', 'xứng đáng có một giải pháp tùy chỉnh.')}
+						{t(
+							'deserves a custom solution.',
+							'xứng đáng có một giải pháp tùy chỉnh.'
+						)}
 					</p>
 				</div>
 			</div>
@@ -371,10 +379,12 @@ const Pricing = () => {
 										<AddOnRow
 											label={{
 												// NOTE: content preserved exactly as original
-												en: 'Thêm mỗi tiểu bang',
-												vi: 'Additional state:',
+												en: 'Additional state:',
+												vi: 'Thêm mỗi tiểu bang',
 											}}
-											price={PRICING_OPTIONS.INDIVIDUAL.ADD_ONS.ADDITIONAL_STATE}
+											price={
+												PRICING_OPTIONS.INDIVIDUAL.ADD_ONS.ADDITIONAL_STATE
+											}
 											suffix={{ en: 'each', vi: 'mỗi bộ' }}
 										/>
 									</div>
@@ -386,7 +396,10 @@ const Pricing = () => {
 											suffix={{ en: 'each', vi: 'mỗi bộ' }}
 										/>
 										<AddOnRow
-											label={{ en: 'Additional rental:', vi: 'Thêm tài sản cho thuê:' }}
+											label={{
+												en: 'Additional rental:',
+												vi: 'Thêm tài sản cho thuê:',
+											}}
 											price={
 												PRICING_OPTIONS.INDIVIDUAL.ADD_ONS.ADDITIONAL_RENTAL
 											}
@@ -444,7 +457,10 @@ const Pricing = () => {
 
 									<ul className="pricing-page__selected__details__price__item__features pricing-page__selected__details__price__item__features--listed">
 										<ListedPriceItem
-											title={{ en: 'LLC Formation & EIN', vi: 'Thành lập LLC & EIN' }}
+											title={{
+												en: 'LLC Formation & EIN',
+												vi: 'Thành lập LLC & EIN',
+											}}
 											subtitle={{
 												en: 'Includes name availability check and filing',
 												vi: 'Bao gồm kiểm tra tên khả dụng và nộp hồ sơ',
@@ -452,7 +468,10 @@ const Pricing = () => {
 											price={PRICING_OPTIONS.BUSINESS.FORMATION.LLC_EIN}
 										/>
 										<ListedPriceItem
-											title={{ en: 'Entity Election', vi: 'Chọn Loại Hình Doanh Nghiệp' }}
+											title={{
+												en: 'Entity Election',
+												vi: 'Chọn Loại Hình Doanh Nghiệp',
+											}}
 											subtitle={{
 												en: 'Choose your business structure (S-Corp or C-Corp)',
 												vi: 'Chọn cấu trúc doanh nghiệp của bạn (S-Corp hoặc C-Corp)',
@@ -465,7 +484,9 @@ const Pricing = () => {
 												en: 'PIR report and sales tax account setup',
 												vi: 'Báo cáo PIR và thiết lập tài khoản thuế bán hàng',
 											}}
-											price={PRICING_OPTIONS.BUSINESS.FORMATION.STATE_COMPLIANCE}
+											price={
+												PRICING_OPTIONS.BUSINESS.FORMATION.STATE_COMPLIANCE
+											}
 										/>
 									</ul>
 								</Card>
@@ -487,7 +508,12 @@ const Pricing = () => {
 									<ul className="pricing-page__selected__details__price__item__features pricing-page__selected__details__price__item__features--tiered">
 										<li className="pricing-page__selected__details__price__item__features__tiered__item">
 											<div className="pricing-page__selected__details__price__item__features__tiered__item__header">
-												<h4>{t('Monthly Bookkeeping (QBO)', 'Kế Toán Hàng Tháng (QBO)')}</h4>
+												<h4>
+													{t(
+														'Monthly Bookkeeping (QBO)',
+														'Kế Toán Hàng Tháng (QBO)'
+													)}
+												</h4>
 											</div>
 
 											<div className="pricing-page__selected__details__price__item__features__tiered__item__list">
@@ -561,7 +587,8 @@ const Pricing = () => {
 											<div className="pricing-page__selected__details__price__item__features__item__price">
 												<p>
 													${PRICING_OPTIONS.BUSINESS.PAYROLL.MONTHLY_ADMIN} + $
-													{PRICING_OPTIONS.BUSINESS.PAYROLL.EMPLOYEE_PAY} /employee
+													{PRICING_OPTIONS.BUSINESS.PAYROLL.EMPLOYEE_PAY}{' '}
+													/employee
 												</p>
 											</div>
 										</li>
@@ -583,8 +610,8 @@ const Pricing = () => {
 											</div>
 											<div className="pricing-page__selected__details__price__item__features__item__price">
 												<p>
-													${PRICING_OPTIONS.BUSINESS.PAYROLL.FORM_GENERATE} / W-2
-													or 1099
+													${PRICING_OPTIONS.BUSINESS.PAYROLL.FORM_GENERATE} /
+													W-2 or 1099
 												</p>
 											</div>
 										</li>
@@ -624,10 +651,13 @@ const Pricing = () => {
 														}
 													/>
 													<TieredRow
-														name={{ en: 'Tax Preparation', vi: 'Chuẩn bị Thuế' }}
+														name={{
+															en: 'Standard',
+															vi: 'Tiêu Chuẩn',
+														}}
 														detail={{
-															en: 'Includes tax-ready books, 1-2 owners, 1 state',
-															vi: 'Bao gồm sổ sách sẵn sàng nộp thuế, 1-2 chủ sở hữu, 1 tiểu bang',
+															en: 'Includes tax-ready books, 3 owners, 1 state',
+															vi: 'Bao gồm sổ sách sẵn sàng nộp thuế, 3 chủ sở hữu, 1 tiểu bang',
 														}}
 														price={
 															PRICING_OPTIONS.BUSINESS.TAX_PREPARATION
@@ -676,10 +706,16 @@ const Pricing = () => {
 											</div>
 											<div>
 												<p>
-													{t('Franchise Tax report:', 'Báo cáo Thuế Nhượng quyền:')}{' '}
+													{t(
+														'Franchise Tax report:',
+														'Báo cáo Thuế Nhượng quyền:'
+													)}{' '}
 													<strong>
 														$
-														{PRICING_OPTIONS.BUSINESS.ADD_ONS.FRANCHISE_TAX_REPORT}{' '}
+														{
+															PRICING_OPTIONS.BUSINESS.ADD_ONS
+																.FRANCHISE_TAX_REPORT
+														}{' '}
 														{t('each', 'mỗi bộ')}
 													</strong>
 												</p>
@@ -692,10 +728,16 @@ const Pricing = () => {
 											</div>
 											<div>
 												<p>
-													{t('Multi-state apportionment:', 'Phân bổ đa tiểu bang:')}
+													{t(
+														'Multi-state apportionment:',
+														'Phân bổ đa tiểu bang:'
+													)}
 													<strong>
 														$
-														{PRICING_OPTIONS.BUSINESS.ADD_ONS.MULTI_STATE_APPORTIONMENT}
+														{
+															PRICING_OPTIONS.BUSINESS.ADD_ONS
+																.MULTI_STATE_APPORTIONMENT
+														}
 														{t('/ state', '/ tiểu bang')}
 													</strong>
 												</p>
@@ -751,9 +793,16 @@ const Pricing = () => {
 							{t('Tax & Retirement Planning', 'Lập Kế Hoạch Thuế & Hưu Trí')}
 						</h2>
 						<Card className="pricing-page__selected__details__price__item pricing-page__selected__details__price__item--single">
-							<h3>{t('Retirement & Advisory Services', 'Dịch Vụ Hưu Trí & Tư Vấn')}</h3>
+							<h3>
+								{t(
+									'Retirement & Advisory Services',
+									'Dịch Vụ Hưu Trí & Tư Vấn'
+								)}
+							</h3>
 
-							<div>${PRICING_OPTIONS.RETIREMENT.PLANNING_HOURLY_RATE} per hour</div>
+							<div>
+								${PRICING_OPTIONS.RETIREMENT.PLANNING_HOURLY_RATE} per hour
+							</div>
 
 							<div>
 								{t(
